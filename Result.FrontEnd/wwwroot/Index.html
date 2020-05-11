@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Cats vs Dogs -- Result</title>
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0">
+    <link rel='stylesheet' href='/CSS/style.css' />
+</head>
+<body>
+    <div id="background-stats">
+        <div id="background-stats-1">
+        </div>
+        <div id="background-stats-2">
+        </div>
+    </div>
+    <div id="content-container">
+        <div id="content-container-center">
+            <div id="choice">
+                <div class="choice cats">
+                    <div class="label">Cats</div>
+                    <div class="stat"><span data-bind="text: choiceA"></span></div>
+                </div>
+                <div class="divider"></div>
+                <div class="choice dogs">
+                    <div class="label">Dogs</div>
+                    <div class="stat"><span data-bind="text: choiceB"></span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="result">
+        <span data-bind="text: voteCount"></span>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.5.0.js"></script>
+    <script src="JS/app.js"></script>
+</body>
+</html>
