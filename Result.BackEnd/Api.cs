@@ -91,7 +91,7 @@ namespace Result.BackEnd
         }
 
         [FunctionName("negotiate")]
-        public static async Task<SignalRConnectionInfo> Negotiate(
+        public static SignalRConnectionInfo Negotiate(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
             [SignalRConnectionInfo(HubName = "voteHub")]SignalRConnectionInfo connectionInfo,
             ILogger log)
