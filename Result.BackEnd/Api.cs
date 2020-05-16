@@ -16,17 +16,19 @@ using Result.BackEnd.Helper;
 using Result.BackEnd.POCO;
 using System.Collections.Generic;
 using Result.BackEnd.Repository;
+using Microsoft.Azure.Documents;
+using Microsoft.Azure.WebJobs.Extensions.SignalRService;
 
 namespace Result.BackEnd
 {
-    public class GetData
+    public class Api
     {
         private readonly ILogger _logger;
         private readonly IConfiguration _config;
         private IRepository _cosmosRepo;
 
-        public GetData(
-            ILogger<GetData> logger,
+        public Api(
+            ILogger<Api> logger,
             IConfiguration config,
             IRepository cosmosRepo
             )
@@ -67,6 +69,36 @@ namespace Result.BackEnd
             Vote lastVote = await _cosmosRepo.GetLastVote();
 
             return new OkObjectResult(lastVote);
+        }
+
+        [FunctionName(nameof(VoteInserted))]
+        public Task VoteInserted(
+            [CosmosDBTrigger(
+                databaseName: "vote-db",
+                collectionName: "votes",
+                ConnectionStringSetting = "CosmosConnection",
+                LeaseCollectionName = "leases", CreateLeaseCollectionIfNotExists = true)] IReadOnlyList<Document> input,
+            [SignalR(HubName = "voteHub")]IAsyncCollector<SignalRMessage> signalRMessages)
+        {
+            _logger.LogInformation("GetLastVote processed a request.");            
+
+            return signalRMessages.AddAsync(
+                new SignalRMessage
+                {
+                    Target = "voteInserted",
+                    Arguments = input.ToArray()
+                });
+        }
+
+        [FunctionName("negotiate")]
+        public static async Task<SignalRConnectionInfo> Negotiate(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
+            [SignalRConnectionInfo(HubName = "voteHub")]SignalRConnectionInfo connectionInfo,
+            ILogger log)
+        {
+            log.LogInformation("Negotiate function processed a request.");
+
+            return connectionInfo;
         }
     }
 }

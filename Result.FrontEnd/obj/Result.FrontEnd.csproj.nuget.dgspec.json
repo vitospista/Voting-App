@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\vitos\\source\\repos\\Voting-App\\Result.FrontEnd\\Result.FrontEnd.csproj": {}
+    "C:\\Users\\vitos\\Desktop\\Work\\Azure Course\\vs_projects\\Voting-App\\Result.FrontEnd\\Result.FrontEnd.csproj": {}
   },
   "projects": {
-    "C:\\Users\\vitos\\source\\repos\\Voting-App\\Result.FrontEnd\\Result.FrontEnd.csproj": {
+    "C:\\Users\\vitos\\Desktop\\Work\\Azure Course\\vs_projects\\Voting-App\\Result.FrontEnd\\Result.FrontEnd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\vitos\\source\\repos\\Voting-App\\Result.FrontEnd\\Result.FrontEnd.csproj",
+        "projectUniqueName": "C:\\Users\\vitos\\Desktop\\Work\\Azure Course\\vs_projects\\Voting-App\\Result.FrontEnd\\Result.FrontEnd.csproj",
         "projectName": "Result.FrontEnd",
-        "projectPath": "C:\\Users\\vitos\\source\\repos\\Voting-App\\Result.FrontEnd\\Result.FrontEnd.csproj",
+        "projectPath": "C:\\Users\\vitos\\Desktop\\Work\\Azure Course\\vs_projects\\Voting-App\\Result.FrontEnd\\Result.FrontEnd.csproj",
         "packagesPath": "C:\\Users\\vitos\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\vitos\\source\\repos\\Voting-App\\Result.FrontEnd\\obj\\",
+        "outputPath": "C:\\Users\\vitos\\Desktop\\Work\\Azure Course\\vs_projects\\Voting-App\\Result.FrontEnd\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\vitos\\AppData\\Roaming\\NuGet\\NuGet.Config",

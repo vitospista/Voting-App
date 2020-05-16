@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\..\..\..\source\repos\Voting-App\Message\Messaging.csproj" />
+  </ItemGroup>
+
 </Project>

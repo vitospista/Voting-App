@@ -549,11 +549,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\vitos\\source\\repos\\Voting-App\\Message\\Messaging.csproj",
+      "projectUniqueName": "C:\\Users\\vitos\\Desktop\\Work\\Azure Course\\vs_projects\\Voting-App\\Message\\Messaging.csproj",
       "projectName": "Messaging",
-      "projectPath": "C:\\Users\\vitos\\source\\repos\\Voting-App\\Message\\Messaging.csproj",
+      "projectPath": "C:\\Users\\vitos\\Desktop\\Work\\Azure Course\\vs_projects\\Voting-App\\Message\\Messaging.csproj",
       "packagesPath": "C:\\Users\\vitos\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\vitos\\source\\repos\\Voting-App\\Message\\obj\\",
+      "outputPath": "C:\\Users\\vitos\\Desktop\\Work\\Azure Course\\vs_projects\\Voting-App\\Message\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\vitos\\AppData\\Roaming\\NuGet\\NuGet.Config",
