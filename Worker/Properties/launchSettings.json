@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "Worker": {
-      "commandName": "Project",
-      "commandLineArgs": "host start --port 5860"
-    }
-  }
-}
