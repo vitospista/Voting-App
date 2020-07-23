@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Authentication.Facebook;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Messaging;
 
 namespace Vote
@@ -20,7 +22,19 @@ namespace Vote
         public void ConfigureServices(IServiceCollection services)
         {
             services
-                .AddMvc((options) => options.EnableEndpointRouting = false)
+                .AddAuthentication(options =>
+                {
+                    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                    options.DefaultChallengeScheme = FacebookDefaults.AuthenticationScheme;
+                })
+                .AddCookie()
+                .AddFacebook(options =>
+                {
+                    options.ClientId = Configuration["Authentication:Facebook:AppId"];
+                    options.ClientSecret = Configuration["Authentication:Facebook:AppSecret"];
+                });
+            services
+                .AddMvc((options) => options.EnableEndpointRouting = false)                
                 .AddRazorPagesOptions(options =>
                 {
                     options.Conventions.ConfigureFilter(new IgnoreAntiforgeryTokenAttribute());
@@ -38,7 +52,8 @@ namespace Vote
             {
                 app.UseExceptionHandler("/Error");
             }
-                                 
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseStaticFiles();
             app.UseMvc();
         }

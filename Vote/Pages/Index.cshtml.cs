@@ -1,5 +1,6 @@
 ﻿using System;
 using Messaging;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
@@ -8,6 +9,7 @@ using Vote.Event;
 
 namespace Vote.Pages
 {
+    [Authorize]
     public class IndexModel : PageModel
     {
         private string _optionA;

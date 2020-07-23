@@ -16,6 +16,7 @@
 <body>
     <div id="content-container">
         <div id="content-container-center">
+            <h2>Hi @Model.HttpContext.User.Identity.Name</h2>
             <h3>@Model.OptionA vs @Model.OptionB!</h3>
             <form method="POST" id="choice" name='form'>
                 <button id="a" type="submit" name="vote" class="a" value="a">@Model.OptionA</button>
