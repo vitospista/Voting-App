@@ -12,8 +12,6 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
-        "Authentication:Facebook:AppId": "319311456122064",
-        "Authentication:Facebook:AppSecret": "3e4361fb85e7d37423f150f39b2f0862",
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
