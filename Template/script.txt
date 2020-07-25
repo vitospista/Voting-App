@@ -1,2 +1,0 @@
-az group create --name votingapp_rg --location "West Europe"
-az deployment group create --name prodenvironment --resource-group votingapp_rg --template-file template.json --parameters parameters.json
