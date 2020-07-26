@@ -2,14 +2,17 @@
 using Messaging;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Vote.Event;
+using Microsoft.AspNetCore.Authentication;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace Vote.Pages
 {
-    [Authorize]
+    //[Authorize]
     public class IndexModel : PageModel
     {
         private string _optionA;
@@ -48,8 +51,18 @@ namespace Vote.Pages
             OptionB = _optionB;
         }
 
+        public IActionResult OnPostLogin(string provider)
+        {
+            return Challenge(provider);
+        }
+
         public IActionResult OnPost(string vote)
         {
+            if (!HttpContext.User.Identity.IsAuthenticated)
+            {
+                return RedirectToPage();
+            }
+
             Vote = vote;
             OptionA = _optionA;
             OptionB = _optionB;
@@ -58,6 +71,13 @@ namespace Vote.Pages
                 PublishVote(vote);
             }
             return Page();
+        }
+
+        public async Task<IActionResult> OnPostLogoutAsync()
+        {
+            await HttpContext.SignOutAsync();
+            DeleteCookies();
+            return RedirectToPage();
         }
 
         private void PublishVote(string vote)
@@ -72,6 +92,14 @@ namespace Vote.Pages
                 Vote = vote
             };
            _messageQueue.Publish(message);
+        }
+
+        private void DeleteCookies()
+        {
+            foreach (var cookie in HttpContext.Request.Cookies)
+            {
+                Response.Cookies.Delete(cookie.Key);
+            }
         }
     }
 }
